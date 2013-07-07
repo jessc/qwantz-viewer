@@ -20,9 +20,9 @@ Shoes.app :title => "Qwantz Viewer", :width => 800, :height => 600 do
     comic_number_line.text = "1000"
     button "Apply" do
       image_url = "http://www.qwantz.com/comics/comic2-" + comic_number_line.text + ".png"
+      # displays comic, then changes the image to another using .path
       comic = image image_url
-      # comic.path = image_url
-      # para comic.path
+      comic.path = "http://www.qwantz.com/comics/comic2-120.png"
     end
   end
 end
