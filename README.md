@@ -1,10 +1,7 @@
 Qwantz Viewer
 =============
 
-Ruby Shoes app where you can look at specific Qwantz (Dinosaur Comics) images and go backward and forward.
-
-
-## Overview
+Ruby Shoes app where you can look at specific Qwantz images (Dinosaur Comics) and go backward and forward.
 
 Uses the Ruby GUI toolkit Shoes.
 
