@@ -24,7 +24,12 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
         @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
         # bug:
         # before changing, must detect that this is a valid URL
-        # otherwise it will not show an image at all
+        # otherwise it will not show an image at all:
+        # uri = URI.parse(url)
+        # result = Net::HTTP.start(uri.host, uri.port) { |http| http.get(uri.path) }
+        # puts result.code
+        # puts result.body
+                
         @comic.path = @image_url
       end
     end
