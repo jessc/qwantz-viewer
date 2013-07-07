@@ -12,17 +12,23 @@
 =end
 
 
-Shoes.app :title => "Qwantz Viewer", :width => 800, :height => 600 do
+Shoes.app :title => "Qwantz Viewer", :width => 900, :height => 675 do
 
-  flow do
-    para "Comic Number:"
-    comic_number_line = edit_line
-    comic_number_line.text = "1000"
-    button "Apply" do
-      image_url = "http://www.qwantz.com/comics/comic2-" + comic_number_line.text + ".png"
-      # displays comic, then changes the image to another using .path
-      comic = image image_url
-      comic.path = "http://www.qwantz.com/comics/comic2-120.png"
+  stack :margin => 20 do
+    comic = image "http://www.qwantz.com/comics/comic2-14.png"
+
+    flow :margin => 20 do
+      para "Comic Number:"
+      comic_number_line = edit_line
+      comic_number_line.text = "14"
+
+      button "Apply" do
+        image_url = "http://www.qwantz.com/comics/comic2-" + comic_number_line.text + ".png"
+        # bug:
+        # before changing, must detect that this is a valid URL
+        # otherwise it will not show an image at all
+        comic.path = image_url
+      end
     end
   end
 end
