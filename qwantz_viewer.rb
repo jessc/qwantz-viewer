@@ -18,6 +18,8 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
     style(:margin_left => '50%', :left => '-25%')
     flow do
 
+      # consider also showing the date of the comic,
+      # eg, Jan 1, 2010
       para "Comic Number:"
       @comic_number_line = edit_line
       @comic_number_line.text = "11"
@@ -56,9 +58,13 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
         @comic.path = @image_url
       end
     end
+
   end
-  flow do
-    @comic = image "http://www.qwantz.com/comics/comic2-14.png"
-  end
+
+    flow do
+      style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
+      @comic = image "http://www.qwantz.com/comics/comic2-14.png"
+    end
+
 end
 
