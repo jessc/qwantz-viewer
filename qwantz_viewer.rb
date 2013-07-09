@@ -34,10 +34,6 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
       end
     end
 
-    flow do
-      @comic = image "http://www.qwantz.com/comics/comic2-14.png"
-    end
-
     flow :margin => 20 do
       # refactor this code, it's so awful
       button "Previous" do
@@ -58,6 +54,10 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
         @comic.path = @image_url
       end
 
+
+    flow do
+      @comic = image "http://www.qwantz.com/comics/comic2-14.png"
+    end
     end
   end
 end
