@@ -11,6 +11,9 @@
 
 =end
 
+# Used to check if Qwantz image exists.
+require 'open-uri'
+require 'net/http'
 
 Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
 
@@ -26,13 +29,20 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
 
       button "Apply" do
         @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
+
         # bug:
-        # before changing, must detect that this is a valid URL
-        # otherwise it will not show an image at all. try:
-        # uri = URI.parse(url)
-        # result = Net::HTTP.start(uri.host, uri.port) { |http| http.get(uri.path) }
-        # puts result.code
-        # puts result.body
+        # need to add URL-valid-checking code to the Previous/Next buttons
+        # If this URL not valid, show
+        # a "No Image Available".jpg.
+        url = URI.parse(@image_url)
+        Net::HTTP.start(url.host, url.port) do |http|
+          if http.head(url.request_uri).code == "404"
+            @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
+          end
+          # unless http.head(url.request_uri).code == "200"
+          #   @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
+          # end
+        end
 
         @comic.path = @image_url
       end
