@@ -31,7 +31,7 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
         @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
 
         # bug:
-        # need to add URL-valid-checking code to the Previous/Next buttons
+        # rewrite this as a method, then use it with Previous/Next buttons
         # If this URL not valid, show
         # a "No Image Available".jpg.
         url = URI.parse(@image_url)
@@ -39,9 +39,6 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
           if http.head(url.request_uri).code == "404"
             @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
           end
-          # unless http.head(url.request_uri).code == "200"
-          #   @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
-          # end
         end
 
         @comic.path = @image_url
@@ -55,6 +52,14 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
         image_num -= 1
         @comic_number_line.text = image_num.to_s
         @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
+
+        url = URI.parse(@image_url)
+        Net::HTTP.start(url.host, url.port) do |http|
+          if http.head(url.request_uri).code == "404"
+            @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
+          end
+        end
+
         @comic.path = @image_url
       end
       
@@ -65,6 +70,14 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
         image_num += 1
         @comic_number_line.text = image_num.to_s
         @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
+
+        url = URI.parse(@image_url)
+        Net::HTTP.start(url.host, url.port) do |http|
+          if http.head(url.request_uri).code == "404"
+            @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
+          end
+        end
+
         @comic.path = @image_url
       end
     end
