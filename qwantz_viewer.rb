@@ -22,6 +22,7 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
     style(:margin_left => '50%', :left => '-25%')
     flow do
 
+      # bug:
       # consider also showing the date of the comic,
       # eg, Jan 1, 2010
       para "Comic Number:"
@@ -100,6 +101,14 @@ class QwantzViewer
   def window(foobar)
     s = self
     foobar.app do
+
+      para "Comic Number:"
+      @comic_number_line = edit_line
+      @comic_number_line.text = "11"
+
+      button "Apply" do
+      end
+
       flow :margin => 20 do
         style(:margin_left => '50%', :left => '-25%')
 
