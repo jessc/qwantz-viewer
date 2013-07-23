@@ -93,9 +93,19 @@ end
 
 
 class QwantzViewer
+  def initialize(foobar)
+    window(foobar)
+  end
+
+  def window(foobar)
+    s = self
+    foobar.app do
+      para "placeholder"
+    end
+  end
 end
 
-# Remove =begin to activate the class version of the Shoes app.
+# Un/comment =begin to de/activate the class version of the Shoes app.
 =begin
 
 
