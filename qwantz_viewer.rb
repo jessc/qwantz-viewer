@@ -90,3 +90,26 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
 
 end
 
+
+
+class QwantzViewer
+end
+
+# Remove =begin to activate the class version of the Shoes app.
+=begin
+
+
+
+Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
+  @qwantz_viewer = QwantzViewer.new(self)
+end
+
+
+
+
+=begin
+# Put temporary code here.
+
+=end
+
+
