@@ -129,6 +129,13 @@ class QwantzViewer
       end
     end
   end
+
+  def set_image(image_url, comic)
+    # placeholder method
+    # here will go the main code to switch comics,
+    # for Apply, Previous, Next buttons
+  end
+
 end
 
 # Un/comment =begin to de/activate the class version of the Shoes app.
