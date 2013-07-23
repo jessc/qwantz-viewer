@@ -100,11 +100,17 @@ class QwantzViewer
   def window(foobar)
     s = self
     foobar.app do
-      para "placeholder"
-      stack :margin => 20 do
+      flow :margin => 20 do
         style(:margin_left => '50%', :left => '-25%')
-        flow do
-          para "placeholder2"
+
+        # bug:
+        # refactor to use methods
+        button "Previous" do
+        end
+
+        para "Dinosaur Comics"
+
+        button "Next" do
         end
       end
 
