@@ -8,6 +8,7 @@
 =begin
 # bug list:
 # todo:
+# rewrite this as a class, then instantiate the class within Shoes.app
 
 =end
 
@@ -32,8 +33,6 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
 
         # bug:
         # rewrite this as a method, then use it with Previous/Next buttons
-        # If this URL not valid, show
-        # a "No Image Available".jpg.
         url = URI.parse(@image_url)
         Net::HTTP.start(url.host, url.port) do |http|
           if http.head(url.request_uri).code == "404"
