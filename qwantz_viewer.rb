@@ -130,10 +130,24 @@ class QwantzViewer
     end
   end
 
-  def set_image(image_url, comic)
+  def set_image(image_url, comic, image_num, diff)
     # placeholder method
     # here will go the main code to switch comics,
     # for Apply, Previous, Next buttons
+
+    image_num = @comic_number_line.text.to_i
+    # this will be what diff affects
+    image_num -= 1
+    @comic_number_line.text = image_num.to_s
+    @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
+
+    url = URI.parse(@image_url)
+    Net::HTTP.start(url.host, url.port) do |http|
+      if http.head(url.request_uri).code == "404"
+        @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
+      end
+    end
+
   end
 
 end
