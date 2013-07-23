@@ -101,6 +101,17 @@ class QwantzViewer
     s = self
     foobar.app do
       para "placeholder"
+      stack :margin => 20 do
+        style(:margin_left => '50%', :left => '-25%')
+        flow do
+          para "placeholder2"
+        end
+      end
+
+      flow do
+        style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
+        @comic = image "http://www.qwantz.com/comics/comic2-14.png"
+      end
     end
   end
 end
