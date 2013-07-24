@@ -81,14 +81,12 @@ Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
         @comic.path = @image_url
       end
     end
-
   end
 
-    flow do
-      style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
-      @comic = image "http://www.qwantz.com/comics/comic2-14.png"
-    end
-
+  flow do
+    style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
+    @comic = image "http://www.qwantz.com/comics/comic2-14.png"
+  end
 end
 
 
@@ -101,6 +99,8 @@ class QwantzViewer
   def window(foobar)
     s = self
     foobar.app do
+
+      para "class version"
 
       stack :margin => 20 do
         style(:margin_left => '50%', :left => '-25%')
@@ -126,14 +126,11 @@ class QwantzViewer
           button "Next" do
           end
         end
+      end
 
-        # bug:
-        # comic image is not centered properly?
-        # style is not applying?
-        flow do
-          style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
-          @comic = image "http://www.qwantz.com/comics/comic2-14.png"
-        end
+      flow do
+        style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
+        @comic = image "http://www.qwantz.com/comics/comic2-14.png"
       end
     end
   end
@@ -145,7 +142,8 @@ class QwantzViewer
 
     image_num = @comic_number_line.text.to_i
     # this will be what diff affects
-    image_num -= 1
+    # diff can be -1 or +1, to change the image
+    image_num += diff
 
     @comic_number_line.text = image_num.to_s
     @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
