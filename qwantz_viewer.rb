@@ -102,30 +102,38 @@ class QwantzViewer
     s = self
     foobar.app do
 
-      para "Comic Number:"
-      @comic_number_line = edit_line
-      @comic_number_line.text = "11"
-
-      button "Apply" do
-      end
-
-      flow :margin => 20 do
+      stack :margin => 20 do
         style(:margin_left => '50%', :left => '-25%')
 
+        flow do
+
+          para "Comic Number:"
+          @comic_number_line = edit_line
+          @comic_number_line.text = "11"
+
+          button "Apply" do
+          end
+        end
+
+        flow :margin => 20 do
+          # bug:
+          # refactor to use methods
+          button "Previous" do
+          end
+
+          para "Dinosaur Comics"
+
+          button "Next" do
+          end
+        end
+
         # bug:
-        # refactor to use methods
-        button "Previous" do
+        # comic image is not centered properly?
+        # style is not applying?
+        flow do
+          style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
+          @comic = image "http://www.qwantz.com/comics/comic2-14.png"
         end
-
-        para "Dinosaur Comics"
-
-        button "Next" do
-        end
-      end
-
-      flow do
-        style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
-        @comic = image "http://www.qwantz.com/comics/comic2-14.png"
       end
     end
   end
@@ -138,6 +146,7 @@ class QwantzViewer
     image_num = @comic_number_line.text.to_i
     # this will be what diff affects
     image_num -= 1
+
     @comic_number_line.text = image_num.to_s
     @image_url = "http://www.qwantz.com/comics/comic2-" + @comic_number_line.text + ".png"
 
@@ -147,9 +156,7 @@ class QwantzViewer
         @image_url = "https://lh4.googleusercontent.com/-iHcpcxQcoJ4/UWZNGLcFV2I/AAAAAAAACNE/uNyPZ5j31iY/s330/noImageAvailable.JPG"
       end
     end
-
   end
-
 end
 
 # Un/comment =begin to de/activate the class version of the Shoes app.
