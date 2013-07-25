@@ -100,6 +100,7 @@ class QwantzViewer
     s = self
     foobar.app do
 
+      @change = para "hopefully this will change"
       para "class version"
 
       stack :margin => 20 do
@@ -128,6 +129,10 @@ class QwantzViewer
         end
       end
 
+      button "change_text" do
+        variable_across_method
+      end
+
       flow do
         style(:margin_top => '20%', :margin_left => '32%', :left => '-25%')
         @comic = image "http://www.qwantz.com/comics/comic2-14.png"
@@ -135,7 +140,13 @@ class QwantzViewer
     end
   end
 
+  def variable_across_method
+    @change.text = "changed!"
+  end
+
   def set_image(image_url, comic, image_num, diff)
+    @comic_number_line.text = "test of using variables across methods"
+    
     # placeholder method
     # here will go the main code to switch comics,
     # for Apply, Previous, Next buttons
