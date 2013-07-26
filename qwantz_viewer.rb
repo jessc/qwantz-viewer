@@ -132,10 +132,12 @@ class QwantzViewer
       button "change_text" do
         # Doesn't work in Shoes:
         # variable_across_method
-        # This also doesn't work:
+        # This doesn't change the text:
         # @change.text = variable_across_method
+        # This changes the text to "", apparently:
+        @change.text = @variable_across_method
         # This does, but defeats the purpose:
-        @change.text = "changed!"
+        # @change.text = "changed!"
       end
 
       flow do
@@ -148,7 +150,6 @@ class QwantzViewer
   def variable_across_method
     # Doesn't work in Shoes:
     # @change.text = "changed!"
-    # This also doesn't work:
     "changed!"
   end
 
