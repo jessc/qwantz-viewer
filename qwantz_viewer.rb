@@ -130,7 +130,12 @@ class QwantzViewer
       end
 
       button "change_text" do
-        variable_across_method
+        # Doesn't work in Shoes:
+        # variable_across_method
+        # This also doesn't work:
+        # @change.text = variable_across_method
+        # This does, but defeats the purpose:
+        @change.text = "changed!"
       end
 
       flow do
@@ -141,7 +146,10 @@ class QwantzViewer
   end
 
   def variable_across_method
-    @change.text = "changed!"
+    # Doesn't work in Shoes:
+    # @change.text = "changed!"
+    # This also doesn't work:
+    "changed!"
   end
 
   def set_image(image_url, comic, image_num, diff)
