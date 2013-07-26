@@ -196,4 +196,24 @@ end
 
 =end
 
+=begin
+# This code seems to be a starting point for changing data perhaps?
+# May not be useful for changing across methods, though...
+
+Shoes.app do 
+  flow do
+    button "hide b stack" do
+      @a.hide
+    end
+    button "show b stack" do
+      @a.show
+    end
+  end
+  @a = flow do
+    @b = para "b"
+  end
+end
+
+
+=end
 
