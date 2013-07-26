@@ -8,9 +8,21 @@
 =begin
 # bug list:
 # todo:
-# rewrite this as a class, then instantiate the class within Shoes.app
+
+
+# Rewrite this as a class, then instantiate the class within Shoes.app.
+# New note below:
+# At the bottom is a class of QwantzViewer that should
+# make it easier to DRY code, because very similar code
+# can be abstracted into a method.
+# Shoes doesn't seem to be powerful enough to do it, however.
+# Since it's not, the code is here for reference of what
+# doesn't seem to work. Hopefully some use for future
+# people attempting to solve this Shoes issue.
+
 
 =end
+
 
 # Used to check if Qwantz image exists.
 require 'open-uri'
@@ -179,41 +191,14 @@ class QwantzViewer
   end
 end
 
-# Un/comment =begin to de/activate the class version of the Shoes app.
+
 =begin
+# Un/comment =begin to de/activate the class version of the Shoes app.
 
-
-
+# This is to easily use the class version.
 Shoes.app :title => "Qwantz Viewer", :width => 852, :height => 639 do
   @qwantz_viewer = QwantzViewer.new(self)
 end
 
 
-
-
-=begin
-# Put temporary code here.
-
 =end
-
-=begin
-# This code seems to be a starting point for changing data perhaps?
-# May not be useful for changing across methods, though...
-
-Shoes.app do 
-  flow do
-    button "hide b stack" do
-      @a.hide
-    end
-    button "show b stack" do
-      @a.show
-    end
-  end
-  @a = flow do
-    @b = para "b"
-  end
-end
-
-
-=end
-
