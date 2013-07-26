@@ -130,6 +130,7 @@ class QwantzViewer
       end
 
       button "change_text" do
+        # (The point of figuring out this is to DRY code into methods.)
         # Doesn't work in Shoes:
         # variable_across_method
         # This doesn't change the text:
@@ -148,6 +149,7 @@ class QwantzViewer
   end
 
   def variable_across_method
+    # (The point of figuring out this is to DRY code into methods.)
     # Doesn't work in Shoes:
     # @change.text = "changed!"
     "changed!"
